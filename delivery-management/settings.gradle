@@ -1,0 +1,9 @@
+rootProject.name = 'delivery-management-system'
+
+
+include 'common-exception'
+project(':common-exception').projectDir = new File(settingsDir, '../common-exception')
+
+include 'common-notification'
+project(':common-notification').projectDir = new File(settingsDir, '../common-notification')
+

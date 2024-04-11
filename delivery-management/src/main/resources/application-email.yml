@@ -1,0 +1,19 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: balkonsuzev@gmail.com
+    password: xzed zfqg bjib tzmh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+application:
+  mail:
+    host: localhost
+    http: http://
+    confirmation: /users/confirmation?token=
+    reset-password: /users/reset-password?username=

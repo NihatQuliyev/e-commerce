@@ -1,0 +1,5 @@
+send:
+  email:
+    otp:
+      second-time: 180
+
