@@ -21,7 +21,7 @@ public class UserController {
         return userService.registration(user);
     }
 
-    @GetMapping("confirmation")
+    @PostMapping("confirmation")
     public ResponseEntity<Void> confirmation(@RequestParam String token) {
 
         return userService.confirmation(token);

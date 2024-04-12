@@ -1,5 +1,6 @@
 package delivery.management.system.config;
 
+import delivery.management.system.model.entity.Driver;
 import delivery.management.system.model.enums.RoleType;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -90,11 +91,12 @@ public class SecurityConfig {
                     request.requestMatchers(HttpMethod.POST, USERS_CUSTOMERS).permitAll();
                     request.requestMatchers(HttpMethod.POST, CONFIRMATION).permitAll();
 
-                    request.requestMatchers(HttpMethod.GET, PRODUCT_ID).anonymous();
+
+                    request.requestMatchers(HttpMethod.GET, PRODUCT_ID).hasAnyRole(ADMIN.name(), CUSTOMER.name(), DRIVER.name());
                     request.requestMatchers(HttpMethod.PUT, PRODUCT_ID).hasRole(ADMIN.name());
                     request.requestMatchers(HttpMethod.DELETE, PRODUCT_ID).hasRole(ADMIN.name());
                     request.requestMatchers(HttpMethod.POST, PRODUCT_PHOTO_UPLOADING).hasRole(ADMIN.name());
-                    request.requestMatchers(HttpMethod.GET, PRODUCT).anonymous();
+                    request.requestMatchers(HttpMethod.GET, PRODUCT).hasAnyRole(ADMIN.name(), CUSTOMER.name(), DRIVER.name());
                     request.requestMatchers(HttpMethod.POST, PRODUCT).hasRole(ADMIN.name());
 
                     request.requestMatchers(HttpMethod.PUT, DRIVERS + UPDATED).hasRole(DRIVER.name());
@@ -103,10 +105,10 @@ public class SecurityConfig {
                     request.requestMatchers(HttpMethod.GET, DRIVERS_ORDER).hasRole(DRIVER.name());
                     request.requestMatchers(HttpMethod.PATCH, DRIVERS_ORDER_DELIVERED).hasRole(DRIVER.name());
 
-                    request.requestMatchers(HttpMethod.GET, CATEGORY_ID).anonymous();
+                    request.requestMatchers(HttpMethod.GET, CATEGORY_ID).hasAnyRole(ADMIN.name(), CUSTOMER.name(), DRIVER.name());
                     request.requestMatchers(HttpMethod.PUT, CATEGORY_ID).hasRole(ADMIN.name());
                     request.requestMatchers(HttpMethod.DELETE, CATEGORY_ID).hasRole(ADMIN.name());
-                    request.requestMatchers(HttpMethod.GET, CATEGORY).anonymous();
+                    request.requestMatchers(HttpMethod.GET, CATEGORY).hasAnyRole(ADMIN.name(), CUSTOMER.name(), DRIVER.name());
                     request.requestMatchers(HttpMethod.POST, CATEGORY).hasRole(ADMIN.name());
 
                     request.requestMatchers(HttpMethod.POST, ROLE).hasRole(ADMIN.name());
